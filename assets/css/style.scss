@@ -1,0 +1,45 @@
+---
+---
+// Definicja kolorów o wysokim kontraście (Dostępność)
+$bg-color: #ffffff;
+$text-color: #1a1a1a;
+$link-color: #005a9c; // Kolor bezpieczny dla osób niedowidzących
+$accent-color: #e60000;
+
+body {
+  background-color: $bg-color;
+  color: $text-color;
+  line-height: 1.6;
+  font-family: "Segoe UI", Arial, sans-serif;
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+// Dodatkowe wsparcie dostępności - widoczny focus dla klawiatury
+*:focus {
+  outline: 3px solid $accent-color !important;
+  outline-offset: 2px;
+}
+
+// Skip links dla czytników ekranu
+.skip-main {
+    left: -999px;
+    position: absolute;
+    top: auto;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    z-index: -999;
+    &:focus {
+        background: $accent-color;
+        color: white;
+        left: auto;
+        top: auto;
+        width: auto;
+        height: auto;
+        overflow: auto;
+        padding: 10px;
+        z-index: 999;
+    }
+}
