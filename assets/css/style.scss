@@ -1,51 +1,91 @@
 ---
 ---
-// Definicja kolorów o wysokim kontraście (Dostępność)
-$bg-color: #ffffff;
-$text-color: #1a1a1a;
-$link-color: #005a9c; // Kolor bezpieczny dla osób niedowidzących
-$accent-color: #e60000;
+// 1. ZMIENNE (Spójność kolorystyczna i dostępność)
+$primary-blue: #005a9c;   // Głęboki niebieski (wysoki kontrast)
+$accent-red: #e60000;    // Czerwony akcent (nawiązanie do barw Poznania)
+$text-dark: #1a1a1a;     // Prawie czarny (najlepsza czytelność)
+$bg-light: #ffffff;      // Białe tło (standard WCAG)
+$font-main: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
 
+// 2. RESET I PODSTAWOWE STYLE
 body {
-  background-color: $bg-color;
-  color: $text-color;
+  font-family: $font-main;
   line-height: 1.6;
-  font-family: "Segoe UI", Arial, sans-serif;
-  max-width: 800px;
+  color: $text-dark;
+  background-color: $bg-light;
+  max-width: 900px;      // Ograniczenie szerokości dla lepszego czytania
   margin: 0 auto;
-  padding: 20px;
+  padding: 40px 20px;
 }
 
-// Dodatkowe wsparcie dostępności - widoczny focus dla klawiatury
-*:focus {
-  outline: 3px solid $accent-color !important;
-  outline-offset: 2px;
+// 3. TYPOGRAFIA (Spójna struktura nagłówków)
+h1 {
+  color: $primary-blue;
+  font-size: 2.5rem;
+  border-bottom: 3px solid $primary-blue;
+  padding-bottom: 10px;
+  margin-bottom: 30px;
 }
 
-// Skip links dla czytników ekranu
-.skip-main {
-    left: -999px;
-    position: absolute;
-    top: auto;
-    width: 1px;
-    height: 1px;
-    overflow: hidden;
-    z-index: -999;
-    &:focus {
-        background: $accent-color;
-        color: white;
-        left: auto;
-        top: auto;
-        width: auto;
-        height: auto;
-        overflow: auto;
-        padding: 10px;
-        z-index: 999;
-    }
+h2, h3 {
+  color: $primary-blue;
+  margin-top: 40px;
 }
+
+// 4. KLUCZ DO TWOJEGO PROBLEMU: RESPONSYWNE ZDJĘCIA
 img {
-  max-width: 100%;
-  height: auto;
+  max-width: 100%;       // Zdjęcie nie wyjdzie poza tekst
+  height: auto;          // Zachowanie proporcji
+  display: block;        // Usunięcie luk pod zdjęciem
+  margin: 25px auto;     // Wyśrodkowanie i odstępy
+  border-radius: 10px;   // Estetyczne zaokrąglenie
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15); // Profesjonalny cień
+  border: 1px solid #ddd;
+}
+
+// Podpis pod zdjęciem (kursywa w Markdown)
+em {
   display: block;
-  margin: 10px 0;
+  text-align: center;
+  color: #666;
+  font-size: 0.9rem;
+  margin-top: -15px;
+  margin-bottom: 30px;
+}
+
+// 5. NAWIGACJA I LINKI
+a {
+  color: $primary-blue;
+  text-decoration: none;
+  font-weight: bold;
+  transition: 0.3s;
+  border-bottom: 2px solid transparent;
+
+  &:hover {
+    color: $accent-red;
+    border-bottom: 2px solid $accent-red;
+  }
+
+  &:focus {
+    outline: 3px solid orange; // Dostępność dla klawiatury
+    outline-offset: 4px;
+  }
+}
+
+// Sekcja listy (wykorzystanie punktora)
+ul {
+  padding-left: 20px;
+  li {
+    margin-bottom: 10px;
+  }
+}
+
+// 6. RESPONSYWNOŚĆ (Dla urządzeń mobilnych)
+@media (max-width: 600px) {
+  body {
+    padding: 20px 15px;
+  }
+  h1 {
+    font-size: 1.8rem;
+  }
 }
